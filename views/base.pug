@@ -1,0 +1,54 @@
+doctype html
+html
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		link(rel='stylesheet' href='/css/style.css')
+		link(rel='shortcut icon' type='image/png' href='/icons/favicon.png')
+		link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+		title Navigator | #{title}
+
+	body
+		.container
+			section.navbar.js-navbar
+				.navbar__top
+					.navbar__logo
+						a(href='/')
+							img.navbar__logo-img(src='/icons/logo.png', alt='logo')
+					h1.navbar__title File Navigator
+
+					if user
+						.upload
+							input#btn-add(type='checkbox')
+							label.navbar__btn-add(for='btn-add') Add
+
+							.navbar__btn-bar
+								button.js-addFolder Add new folder
+								button.js-loadFile Upload files
+
+				.navbar__bottom
+					if user
+						.navbar__user
+							p.navbar__description You are logged in as
+							p.navbar__user-name= user.name
+							button.navbar__btn-logout.js-logout Logout
+						.navbar__status-bar
+							.navbar__status-bar__inner(style=`width: ${availablePercentage}`)
+						.navbar__status-msg= availableSpace
+
+			section.toolbar
+				form.toolbar__search
+					input.toolbar__field.js-search-input
+				.info
+					p
+						span Mail:
+							a(href="mailto:hakumatsunoki@gmail.com") hakumatsunoki@gmail.com 
+						span Skype: 
+							a(href="skype:haku.root?chat") haku.root
+
+			main.main.js-main
+				block content
+
+			section.details.js-details
+
+			script(src='/js/bundle.js')

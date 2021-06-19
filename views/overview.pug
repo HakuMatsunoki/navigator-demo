@@ -1,0 +1,31 @@
+extends base
+
+block content
+	table 
+		tbody.main__table-body.js-table
+			tr
+				th Name:
+				th Type:
+				th Size:
+				th Date:
+
+			each file, key in files
+
+				tr.js-item(data-name= key, data-attr= JSON.stringify(file))
+					td= key
+					td= file.type
+					td= file.formattedSize
+					td= file.birthtime.toLocaleString('en-EN')
+	.popup.js-popup
+		button.popup__close.js-popup-close X
+		.popup__inner.js-popup-folder
+			label.popup__text(for='add-folder') Enter folder name..
+			input.popup__input.js-input-folder(type='text' id='add-folder' name='add-folder')
+			br
+			button.popup__btn.js-popup-add Add
+
+		.popup__inner.js-popup-file
+			label.popup__text(for='add-file') Choose your file(s)..
+			input.popup__input.js-input-file(type='file' id='add-file' name='add-file' multiple)
+			br
+			button.popup__btn.js-popup-upload Upload

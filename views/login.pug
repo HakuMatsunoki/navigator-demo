@@ -1,0 +1,39 @@
+extends base
+
+block content
+	if user
+		.login
+			h2.login__heading= `Hello, ${user.name}!`
+
+			a.login__link(href='/files') Click to browse your files..
+	else
+		.login
+			h2.login__heading Log into your account
+			form.login__form.js-login
+				.form__group
+					label.form__label(for='email') Email address
+					input#email.form__input(type='email', placeholder='you@example.com', required)
+				.form__group
+					label.form__label(for='password') Password
+					input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+				.form__group
+					button.form__btn Login
+
+			hr.divider
+			h2.login__heading Have no account yet? Create one!!
+			form.login__form.js-signup
+				.form__group
+					label.form__label(for='name') Name
+					input#name.form__input(type='text', placeholder='user name', required)
+				.form__group
+					label.form__label(for='sign-email') Email address
+					input#sign-email.form__input(type='email', placeholder='you@example.com', required)
+				.form__group
+					label.form__label(for='sign-password') Password
+					input#sign-password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+				.form__group
+					label.form__label(for='passwordCnf') Confirm password
+					input#passwordCnf.form__input(type='password', placeholder='••••••••', required, minlength='8')
+				.form__group
+					button.form__btn Signup
+		
